@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>MCLauncher</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/light.css">
+  <body>
+  <header id="header">
+    <div id="nav-buttons">
+      <div class="header-button" onclick="nav(0)"><img src="./assets/line.svg" class="header-button-img"></div>
+      <div class="header-button" style="margin-right: 5px;" onclick="nav(1)"><img src="./assets/cross.svg" class="header-button-img"></div>
+    </div>
+  </header>
+  <div id="main-div">
+    <div id="left-panel">
+      <div id="left-top">
+        <div style="overflow: hidden; width: 45px; height: 45px; background-color: #3B4065; border-radius: 100px;"><canvas id="skin" width="45" height="45"></canvas></div>
+      </div>
+      <div id="left-bottom">
+        <img src="./assets/moon.svg" class="left-icon left-top" onclick="changeTheme()"/>
+        <img src="./assets/settings.svg" class="left-icon" onclick="openSettingsPage()" />
+      </div>
+    </div>
+    <div id="secondary-div">
+      <div id="content">
+        <div id="main-page" class="page active-page" style="justify-content: center;align-items: center;font-size:50px;font-weight:bold;color: #fff;">Попка мамонта</div>
+        <div id="accounts-page" class="page">
+          <div id="accounts-container"></div>
+          <div id="accounts-save">
+            <button id="accounts-add-button" onclick="addAccountPage()">Добавить аккаунт</button>
+            <button id="accounts-save-button" onclick="saveAccounts()">Сохранить</button>
+          </div>
+        </div>
+        <div id="versions-page" class="page">
+          <div id="versions-list-changer">
+            <div id="versions-installed" class="versions-list-tab versions-active" onclick="changeVersionsPage(0)">Установленные</div>
+            <div id="versions-download" class="versions-list-tab" onclick="changeVersionsPage(1)">Скачать</div>
+          </div>
+          <div id="versions-container">
+
+          </div>
+          <div id="versions-save">
+            <button id="versions-save-button" onclick="saveVersions()">Сохранить</button>
+          </div>
+        </div>
+        <div id="add-account-page" class="page">
+          <div id="add-container">
+            <div id="email-container" clas="add-section">
+              <div class="add-title" id="email-title">E-mail</div>
+              <div class="add-input"><input id="email-input" class="add-input-inner" type="text"></div>
+            </div>
+            <div id="password-container" clas="add-section" style="max-height: 110px;">
+              <div class="add-title">Пароль</div>
+              <div class="add-input"><input id="password-input" class="add-input-inner" type="password"></div>
+            </div>
+            <button id="account-add-button" onclick="addAccountL()">Добавить</button>
+            <div id="radio-add-container">
+              <div class="radio-button" onclick="setAccountType(0)">
+                <div id="radio-mojang" class="radio-circle radio-active"></div>
+                <div class="radio-text">Mojang</div>
+              </div>
+              <div class="radio-button" onclick="setAccountType(1)">
+                <div id="radio-microsoft" class="radio-circle"></div>
+                <div class="radio-text">Microsoft</div>
+              </div>
+              <div class="radio-button" onclick="setAccountType(2)">
+                <div id="radio-simple" class="radio-circle"></div>
+                <div class="radio-text">Обычный</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="settings-page" class="page">
+          <span class="settings-text">Директория</span>
+          <div class="input-container">
+            <div id="h1" class="input-inner"><input id="directory-input" class="input-input" type="text"></div>
+            <button class="input-button" onmouseenter="cht('h1')" onmouseleave="chf('h1')" onclick="selectMinecraftDir()">Выбрать</button>
+          </div>
+          <span class="settings-text">Версии</span>
+          <div class="checkbox-container">
+            <div id="downloadFromServer" class="custom-checkbox" onclick="checkbox('downloadFromServer')">
+              <div class="checkbox-box"><img class="checkmark" src="./assets/checkmark.svg" /></div>
+              <div class="checkbox-label">Загружать с сервера</div>
+            </div>
+            <div id="alpha" class="custom-checkbox" onclick="checkbox('alpha')">
+              <div class="checkbox-box"><img class="checkmark" src="./assets/checkmark.svg" /></div>
+              <div class="checkbox-label">Альфа (2010 г.)</div>
+            </div>
+            <div id="snapshots" class="custom-checkbox" onclick="checkbox('snapshots')">
+              <div class="checkbox-box"><img class="checkmark" src="./assets/checkmark.svg" /></div>
+              <div class="checkbox-label">Снапшоты</div>
+            </div>
+            <div id="beta" class="custom-checkbox" onclick="checkbox('beta')">
+              <div class="checkbox-box"><img class="checkmark" src="./assets/checkmark.svg" /></div>
+              <div class="checkbox-label">Бета</div>
+            </div>
+            <div id="releasesBefore1710" class="custom-checkbox" onclick="checkbox('releasesBefore1710')">
+              <div class="checkbox-box"><img class="checkmark" src="./assets/checkmark.svg" /></div>
+              <div class="checkbox-label">Релизы до 1.7.10</div>
+            </div>
+          </div>
+          <span class="settings-text">Java / JRE</span>
+          <div class="input-container">
+            <div id="h2" class="input-inner"><input id="java-input" class="input-input" type="text"></div>
+            <button id="java-save-button" class="input-button" onmouseenter="cht('h2')" onmouseleave="chf('h2')" onclick="javaSaveButton()">Настроить</button>
+          </div>
+          <span class="settings-text">Выделение памяти</span>
+          <input type="range" id="memory-slider" min="0" max="1" step="1" oninput="sliderUpdate()">
+          <div id="slider-numbers">
+            <div id="number-one" class="slider-number"></div>
+            <input id="number-two" class="slider-number" type="number" oninput="sliderNumberUpdate()">
+            <div id="number-three" class="slider-number"></div>
+          </div>
+          <button id="settings-save-button" onclick="saveSettings()">Сохранить</button>
+        </div>
+      </div>
+      <div id="bottom-panel">
+        <div id="bottom-left">
+          <div class="panel">
+            <div id="pal" class="panel-left" style="width: 225px;" onclick="toggleSelector(1)">
+              <div id="account-name" class="panel-left-text" style="width: 195px;">Выберите аккаунт</div>
+            </div>
+            <div class="panel-right">
+              <img id="arl" src="./assets/arrow.svg" class="but"  onclick="toggleSelector(1)"/>
+              <img src="./assets/settings.svg" class="but" onclick="openAccountsPage()"/>
+            </div>
+          </div>
+          <div class="panel">
+            <div id="par" class="panel-left" style="width: 145px;" onclick="toggleSelector(2)">
+              <div id="version-name" class="panel-left-text" style="width: 115px;">Выберите версию</div>
+            </div>
+            <div class="panel-right">
+              <img id="arr" src="./assets/arrow.svg" class="but" onclick="toggleSelector(2)"/>
+              <img src="./assets/settings.svg" class="but" onclick="openVersionsPage()"/>
+            </div>
+          </div>
+          <button id="play-button" onclick="play()">Играть</button>
+        </div>
+        <div id="bottom-right">
+          <div class="but2"></div>
+          <div class="but2"></div>
+          <div class="but2"></div>
+          <div class="but2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="sel" class="selector selector-left" style="width: 311px; display: none; opacity: 0;"></div>
+  <div id="ser" class="selector selector-right" style="width: 231px; display: none; opacity: 0;"></div>
+  <div id="errors-container">
+    <div id="errors-container-second"></div>
+    <div id="java-progressbar">
+      <div id="java-progressbar-left">Установка подходящей Java</div>
+      <div id="java-progressbar-right">0%</div>
+    </div>
+  </div>
+    <script src="./assets/script.js"></script>
+  <script src="./assets/percentage.js"></script>
+    <script src="./assets/versions.js"></script>
+  <script src="./assets/accounts.js"></script>
+  <script src="./assets/elements.js"></script>
+  <script src="./assets/game.js"></script>
+  <script src="./assets/java.js"></script>
+  </body>
+</html>

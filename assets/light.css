@@ -1,0 +1,41 @@
+.light-theme{
+    --almost-black: #E0DAC6;
+    --header-color: #EEEDE3;
+    --another-black: #E0DFCE;
+    --black2: #e9e7d3;
+    --bruh-color: #D9D5B6;
+    --maybe-blue: #D3CDB2;
+    --light-bruh-color: #CEC7AA;
+    --bruh2-color: #D5D2B8;
+    --bruh3-color: #cfcbab;
+    --bruh4-color: #b5ad88;
+    --purple-blue-not-blurple: #9E9756;
+    --play-green: #19B44C;
+    --hover-play: #0E953A;
+    --some-red: #FF6060;
+    --disabled-gray: #696c6a;
+}
+.light-theme .but{
+    filter: brightness(4) grayscale(1);
+}
+.light-theme .but:hover{
+    filter: brightness(3.7) grayscale(1);
+}
+.light-theme .header-button-img{
+    filter: brightness(4) grayscale(1);
+}
+.light-theme .header-button-img:hover{
+    filter: brightness(3.8) grayscale(1);
+}
+.light-theme .header-button:hover .header-button-img {
+    filter: brightness(3.8) grayscale(1);
+}
+.light-theme .left-icon{
+    filter: brightness(4) grayscale(1);
+}
+.light-theme .left-icon:hover{
+    filter: brightness(3.7) grayscale(1);
+}
+.light-theme .double-icon:hover{
+    filter: brightness(3.7) grayscale(1);
+}

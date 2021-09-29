@@ -1,0 +1,18 @@
+{
+  "directory": "",
+  "clientToken": "",
+  "theme": "dark",
+  "versions": {
+    "downloadFromServer": true,
+    "alpha": false,
+    "snapshots": false,
+    "beta": false,
+    "releasesBefore1710": false
+  },
+  "selectedVersion": null,
+  "java": {
+    "path": "",
+    "recommended": true,
+    "ram": 2048
+  }
+}
